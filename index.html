@@ -17,25 +17,62 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
   <script src="js/gallery.js"></script>
   <script src="js/ui-bootstrap-tpls-0.12.0.min.js"></script>
-  <script src="js/tc-angular-chartjs.min.js"></script>
 
 </head>
 
 <body>
-<script>
-  <?php
-    //session_start();
-    //$_SESSION["valid"] = true;
 
-    //scan ordner "Gallery"
-    $allFiles = scandir('Gallery');
 
-    foreach ($allFiles as $file) {
-      echo $file."<br />";
-    };
+  <div class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="./"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+        <li><a href="pictures/"><span class="glyphicon glyphicon-glyphicon glyphicon-picture"></span> Bilder</a></li>
+      </ul>
 
-  ?>
-</script>
+        <div class="navbar-right" ng-controller="LoginController">
+          <form class="navbar-form" role="form" ng-show="!auth.user && !auth.inProgress" ng-submit="login()">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Benutzername" ng-model="Username">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" placeholder="Passwort" ng-model="Password">
+            </div>
+            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-log-in"></span> anmelden</button>
+          </form>
+
+          <!--div ng-show="!auth.user && auth.inProgress">
+            <p class="navbar-text">
+              <progressbar class="progress-striped active da-nomargin" value="100">
+                <span class="da-progresstext">Anmeldung läuft...</span>
+              </progressbar>
+            </p>
+          </div-->
+
+          <!--div ng-show="auth.user">
+            <p class="navbar-text"><span class="glyphicon glyphicon-user"></span> angemeldet als {{auth.user.Username}}</p>
+            <button type="button" class="btn btn-primary navbar-btn" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span> abmelden</button>
+          </div-->
+
+        </div>
+
+    </div>
+  </div>
+
+  <script>
+    <?php
+      //session_start();
+      //$_SESSION["valid"] = true;
+
+      //scan ordner "Gallery"
+      $allFiles = scandir('Gallery');
+
+      foreach ($allFiles as $file) {
+        echo $file."<br />";
+      };
+
+    ?>
+  </script>
 
 <p><img alt="" src="Gallery/IMG_0806.JPG"  style="width:128px; height:auto"></p>
 
