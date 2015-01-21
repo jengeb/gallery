@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Gallery</title>
+
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/ui-bootstrap-tpls-0.12.0.min.js"></script>
+  <script src="js/tc-angular-chartjs.min.js"></script>
+
+</head>
+
+<body>
+<script>
+  <?php
+    //session_start();
+    //$_SESSION["valid"] = true;
+
+    //scan ordner "Gallery"
+    $allFiles = scandir('Gallery');
+
+    foreach ($allFiles as $file) {
+      echo $file."<br />";
+    };
+
+  ?>
+</script>
+
+<p><img alt="" src="Gallery/IMG_0806.JPG"  style="width:128px; height:auto"></p>
+
+</body>
+</html>
