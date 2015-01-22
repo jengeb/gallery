@@ -1,9 +1,11 @@
 <div ng-controller="AddImageController">
-  <form enctype="multipart/form-data" action="" method="post">
-    <input type="hidden" name="art" value="0" />
-      <p>Bild auswählen und absenden</p>
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-9 marginTop">
+    <h1>Bild auswählen und absenden</h1>
+    <form enctype="multipart/form-data" action="" method="post" class="moreMarginTop">
       <p><input name="upfile" type="file" /></p>
-      <p><input type="submit" name="gesendet" value="Senden" />
-    <input type="reset" value="Leeren" /></p>
-  </form>
+      <button type="submit" class="btn btn-default"> <span class="glyphicon glyphicon-send"></span> Senden</button>
+    </form>
+  </div>
 </div>
