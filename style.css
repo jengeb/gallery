@@ -1,0 +1,22 @@
+.limitedHeight {
+  height: 580px;
+  width: auto;
+  margin-top: 0;
+}
+
+.moreMarginTop {
+  margin-top: 1.4em;
+}
+
+.colorGray {
+  color: gray;
+}
+
+.moreMarginLeft {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.bigger {
+  font-size: 50px;
+}
