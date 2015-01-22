@@ -9,10 +9,13 @@ gallery.config(function ($routeProvider, $httpProvider) {
     .when('/images', {
       templateUrl: 'templates/images.html',
     })
+    .when('/images_new', {
+      templateUrl: 'templates/images_new.html',
+    })
     ;
 });
 
-gallery.controller('MainController', function ($scope, $http) {
+gallery.controller('ImagesController', function ($scope, $http) {
 
   $scope.slides = [];
   $scope.updateSlides = function() {
