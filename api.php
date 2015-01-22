@@ -1,5 +1,6 @@
 <?php
 
+  require "vendor/autoload.php";
   require "api_images.inc.php";
 
   $app = new \Slim\Slim();
