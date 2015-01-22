@@ -1,5 +1,5 @@
 //Setup Angular
-var gallery = angular.module('gallery', ['ngRoute', 'ngAnimate']);
+var gallery = angular.module('gallery', ['ngRoute', 'ui.bootstrap']);
 
 gallery.config(function ($routeProvider) {
   $routeProvider
@@ -16,8 +16,7 @@ gallery.config(function ($routeProvider) {
 });
 
 gallery.controller('ImagesController', function ($scope, $http) {
-
-  $scope.slides = [];
+  $scope.interval = 2000;
   $scope.updateSlides = function() {
     $http.get('api.php/images').then(function(response) {
       $scope.slides = response.data.images;
