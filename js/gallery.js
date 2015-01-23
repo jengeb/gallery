@@ -50,9 +50,11 @@ gallery.controller('LoginController', function($scope, $http) {
   };
 
   $scope.logout = function() {
-    $scope.Username = "";
-    $scope.Password = "";
-    $scope.auth = false;
+    $http.post('api.php/auth').then(function() {
+      $scope.Username = "";
+      $scope.Password = "";
+      $scope.auth = false;
+    });
   };
 
 });

@@ -25,17 +25,21 @@ function init_api_images($app) {
 // -----------------
 
   $app->post("/images", function () use ($app) {
-    $dir = "Images/";
+    if ($_SESSION["Username"]) {
+      $dir = "Images/";
 
-    if (preg_match('/^image/i', $_FILES['upfile']['type'])) {
+      if (preg_match('/^image/i', $_FILES['upfile']['type'])) {
 
-      $src = $_FILES['upfile']['tmp_name'];
-      $dest = $dir.$_FILES['upfile']['name'];
+        $src = $_FILES['upfile']['tmp_name'];
+        $dest = $dir.$_FILES['upfile']['name'];
 
-      move_uploaded_file($src, $dest);
-      $app->response->redirect("../#/images");
+        move_uploaded_file($src, $dest);
+        $app->response->redirect("../#/images");
+      } else {
+        $app->response->redirect("../#/error");
+      }
     } else {
-      $app->response->redirect("../#/error");
+      $app -> halt(401);
     }
   });
 
@@ -44,9 +48,13 @@ function init_api_images($app) {
 // DELETE
 // -----------------
   $app->delete('/images/:file', function ($file) use ($app) {
-    $dir = "Images/";
-    echo json_encode_utf8($file);
-    unlink($dir . $file);
+    if ($_SESSION["Username"]) {
+      $dir = "Images/";
+      echo json_encode_utf8($file);
+      unlink($dir . $file);
+    } else {
+      $app -> halt(401);
+    }
   });
 
 }

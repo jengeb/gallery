@@ -1,6 +1,5 @@
 <?php
 
-
 function init_api_auth($app) {
 
   $app->post("/auth", function () use ($app) {
@@ -10,17 +9,15 @@ function init_api_auth($app) {
     if (is_string($obj["Username"]) && is_string($obj["Password"])) {
       if (($obj["Username"] == "testuser") && ($obj["Password"] == "testpw")) {
         $_SESSION["Username"] = $obj["Username"];
-          $app -> halt(200);
+        $app -> halt(200);
       } else {
-          $app -> halt(401);
-          $_SESSION["Username"] = false;
+        $app -> halt(401);
+        $_SESSION["Username"] = false;
       }
-      $app -> halt(401);
-      $_SESSION["Username"] = false;
+    $app -> halt(401);
+    $_SESSION["Username"] = false;
     }
   });
-
-
 
 }
 ?>

@@ -21,7 +21,7 @@
 
 <body>
 
-  <div class="navbar navbar-default moreMarginTop" role="navigation">
+  <div class="navbar navbar-default moreMarginTop" role="navigation" ng-controller="LoginController">
     <div class="container-fluid moreMarginLeft">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -32,7 +32,7 @@
           <a class="navbar-brand bigger" href="#/"> Galerie</a>
         </div>
       </div>
-      <div class="collapse navbar-collapse"  ng-controller="LoginController">
+      <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
 
           <li ng-class="{ active: isActive('/images') }"><a href="#/images"><span class="glyphicon glyphicon-picture"></span> Album ansehen</a></li>
@@ -53,7 +53,7 @@
 
           <div ng-show="auth">
             <p class="navbar-text"><span class="glyphicon glyphicon-user"></span> angemeldet als {{Username}}</p>
-            <button type="button" class="btn btn-primary navbar-btn" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span> abmelden</button>
+            <button ng-click="logout()" type="button" class="btn btn-primary navbar-btn"><span class="glyphicon glyphicon-log-out"></span> abmelden</button>
           </div>
 
         </div>
