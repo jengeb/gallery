@@ -28,18 +28,17 @@ function init_api_images($app) {
     if ($_SESSION["Username"]) {
       $dir = "Images/";
 
-      if (preg_match('/^image/i', $_FILES['upfile']['type'])) {
+      echo json_encode_utf8($_FILES);
 
-        $src = $_FILES['upfile']['tmp_name'];
-        $dest = $dir.$_FILES['upfile']['name'];
+      if (preg_match('/^image/i', $_FILES['file']['type'])) {
+
+        $src = $_FILES['file']['tmp_name'];
+        $dest = $dir.$_FILES['file']['name'];
 
         move_uploaded_file($src, $dest);
-        $app->response->redirect("../#/images");
-      } else {
-        $app->response->redirect("../#/error");
       }
     } else {
-      $app -> halt(401);
+      return ($app -> halt(401));
     }
   });
 
@@ -53,7 +52,7 @@ function init_api_images($app) {
       echo json_encode_utf8($file);
       unlink($dir . $file);
     } else {
-      $app -> halt(401);
+      return ($app -> halt(401));
     }
   });
 

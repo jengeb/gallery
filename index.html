@@ -16,6 +16,7 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
   <script src="js/gallery.js"></script>
   <script src="js/ui-bootstrap-tpls-0.12.0.min.js"></script>
+  <script src="js/angular-file-upload-all.js"></script>
 
 </head>
 
@@ -34,12 +35,12 @@
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-
           <li ng-class="{ active: isActive('/images') }"><a href="#/images"><span class="glyphicon glyphicon-picture"></span> Album ansehen</a></li>
           <li ng-show="auth" ng-class="{ active: isActive('/images_new') }"><a href="#/images_new"><span class="glyphicon glyphicon-plus"></span> Bilder hinzufügen</a></li>
         </ul>
 
         <div class="navbar-right">
+
           <form class="navbar-form" role="form" ng-show="!auth">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Benutzername" ng-model="Username">

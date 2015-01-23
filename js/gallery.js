@@ -1,5 +1,5 @@
 //Setup Angular
-var gallery = angular.module('gallery', ['ngRoute', 'ui.bootstrap']);
+var gallery = angular.module('gallery', ['ngRoute', 'ui.bootstrap', "angularFileUpload"]);
 
 gallery.config(function ($routeProvider) {
   $routeProvider
@@ -34,10 +34,21 @@ gallery.controller('ImagesController', function ($scope, $http) {
   };
 });
 
+gallery.controller('AddImageController', function($scope, $upload, $location) {
+  $scope.upload = function() {
+    $upload.upload({
+      url: "api.php/images",
+      file: $scope.file
+    }).success(function() {
+      $location.path('/images');
+    }).error(function() {
+      $location.path('/error');
+    });
+  };
+});
 
 gallery.controller('LoginController', function($scope, $http) {
   $scope.auth = false;
-
   $scope.login = function(Username, Password) {
     $http.post('api.php/auth', {
       Username: $scope.Username,
