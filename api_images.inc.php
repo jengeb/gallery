@@ -9,7 +9,7 @@ function init_api_images($app) {
     $dir = "Images/";
     $files = scandir($dir);
     foreach ($files as $file) {
-      if (filetype($dir . $file) == "file" && ($file != ".") && ($file != "..")) {
+      if (filetype($dir . $file) == "file" && ($file != ".") && ($file != "..") && ($file != ".gitignore")) {
         $imageNames[] = array("image" => $file);
       }
     }
