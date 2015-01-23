@@ -2,6 +2,7 @@
 
   require "vendor/autoload.php";
   require "api_images.inc.php";
+  require "api_auth.inc.php";
 
   $app = new \Slim\Slim();
   //Header wird für Antwort gesetzt (als JSON und utf8)
@@ -33,6 +34,7 @@
   }
 
   init_api_images($app);
+  init_api_auth($app);
 
   try {
     $app->run();

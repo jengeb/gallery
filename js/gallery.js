@@ -18,6 +18,7 @@ gallery.config(function ($routeProvider) {
     ;
 });
 
+
 gallery.controller('ImagesController', function ($scope, $http) {
   $scope.updateSlides = function() {
     $http.get('api.php/images').then(function(response) {
@@ -31,5 +32,16 @@ gallery.controller('ImagesController', function ($scope, $http) {
       $scope.updateSlides();
     });
   };
+});
 
+
+gallery.controller('LoginController', function($scope, $http) {
+  $scope.auth = false;
+
+  $scope.login = function(Username, Password) {
+    $http.post('api.php/auth', {
+      Username: $scope.Username,
+      Password: $scope.Password
+    });
+  };
 });
