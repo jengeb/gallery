@@ -9,9 +9,6 @@ gallery.config(function ($routeProvider) {
     .when('/images', {
       templateUrl: 'templates/images.html',
     })
-    .when('/images_new', {
-      templateUrl: 'templates/images_new.html',
-    })
     .when('/error', {
       templateUrl: 'templates/error.html',
     })
@@ -19,7 +16,8 @@ gallery.config(function ($routeProvider) {
 });
 
 
-gallery.controller('ImagesController', function ($scope, $http) {
+gallery.controller('ImagesController', function ($scope, $http, $upload, $location, AuthService) {
+  $scope.auth = AuthService;
   $scope.updateSlides = function() {
     $http.get('api.php/images').then(function(response) {
       $scope.slides = response.data.images;
@@ -34,40 +32,53 @@ gallery.controller('ImagesController', function ($scope, $http) {
   };
 });
 
-gallery.controller('AddImageController', function($scope, $upload, $location) {
+gallery.controller('AddImageController', function($scope, $upload, $location, $route) {
   $scope.upload = function() {
     $upload.upload({
       url: "api.php/images",
       file: $scope.file
     }).success(function() {
       $location.path('/images');
+      $route.reload();
     }).error(function() {
       $location.path('/error');
     });
   };
 });
 
-gallery.controller('LoginController', function($scope, $http) {
-  $scope.auth = false;
-  $scope.login = function(Username, Password) {
-    $http.post('api.php/auth', {
-      Username: $scope.Username,
-      Password: $scope.Password
-    }).then(function() {
-      $scope.auth = true;
+gallery.controller('LoginController', function($scope, AuthService) {
+  $scope.auth = AuthService;
+  $scope.logout = function () {
+    $scope.Username = "";
+    $scope.Password = "";
+    AuthService.logout();
+  };
+});
+
+gallery.service('AuthService', function ($http) {
+  var AuthService = {
+    loggedIn: false
+  };
+  AuthService.login = function(Username, Password) {
+    return $http.post('api.php/auth', {
+      Username: Username,
+      Password: Password
+    }).then(function(response) {
+      AuthService.loggedIn = true;
+      AuthService.Username = response.data.Username;
     }, function() {
-      $scope.auth = false;
+      AuthService.loggedIn = false;
+      AuthService.Username = undefined;
     });
   };
-
-  $scope.logout = function() {
-    $http.post('api.php/auth', {
+  AuthService.logout = function() {
+    return $http.post('api.php/auth', {
       Logout: "Logout"
     }).then(function() {
-      $scope.Username = "";
-      $scope.Password = "";
-      $scope.auth = false;
+      AuthService.loggedIn = false;
+      AuthService.Username = false;
     });
   };
-
+  AuthService.login();
+  return AuthService;
 });
