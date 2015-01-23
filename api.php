@@ -4,6 +4,8 @@
   require "api_images.inc.php";
   require "api_auth.inc.php";
 
+  session_start();
+
   $app = new \Slim\Slim();
   //Header wird für Antwort gesetzt (als JSON und utf8)
   $app->response->headers->set("Content-Type", "application/json; charset=utf-8");

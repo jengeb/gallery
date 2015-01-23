@@ -50,8 +50,8 @@ gallery.controller('LoginController', function($scope, $http) {
   };
 
   $scope.logout = function() {
-
-    
+    $scope.Username = "";
+    $scope.Password = "";
     $scope.auth = false;
   };
 
