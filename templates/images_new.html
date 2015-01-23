@@ -3,7 +3,8 @@
   </div>
   <div class="col-md-9 marginTop">
     <h1>Bild auswählen und absenden</h1>
-    <form enctype="multipart/form-data" action="" method="post" class="moreMarginTop">
+    <form enctype="multipart/form-data" action="api.php/images" method="post" class="moreMarginTop">
+      <input type="hidden" name="MAX_FILE_SIZE" value="30000000" />
       <p><input name="upfile" type="file" /></p>
       <button type="submit" class="btn btn-default"> <span class="glyphicon glyphicon-send"></span> Senden</button>
     </form>
