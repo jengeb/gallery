@@ -16,7 +16,6 @@ gallery.config(function ($routeProvider) {
 });
 
 gallery.controller('ImagesController', function ($scope, $http) {
-  $scope.interval = 2000;
   $scope.updateSlides = function() {
     $http.get('api.php/images').then(function(response) {
       $scope.slides = response.data.images;
@@ -24,6 +23,12 @@ gallery.controller('ImagesController', function ($scope, $http) {
   };
   $scope.updateSlides();
 
-
+  $scope.deleteImage = function(image) {
+    console.log(image);
+    
+    $http.delete('api.php/images/' + image).then(function() {
+      $scope.updateSlides();
+    });
+  };
 
 });

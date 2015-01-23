@@ -2,8 +2,9 @@
   <div class="myCarousel">
     <carousel>
       <slide ng-repeat="slide in slides" active="active">
-        <img ng-src="{{slide.image}}" style="margin:auto;">
+        <img ng-src="Images/{{slide.image}}" style="margin:auto;">
         <div class="carousel-caption">
+          <button type="button" class="btn btn-default button" ng-click="deleteImage(slide.image)"><span class="glyphicon glyphicon-remove"></span> löschen</button>
         </div>
       </slide>
     </carousel>

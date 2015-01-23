@@ -10,7 +10,7 @@ function init_api_images($app) {
     $files = scandir($dir);
     foreach ($files as $file) {
       if (filetype($dir . $file) == "file" && ($file != ".") && ($file != "..")) {
-        $imageNames[] = array("image" => $dir . $file);
+        $imageNames[] = array("image" => $file);
       }
     }
 
@@ -34,6 +34,15 @@ function init_api_images($app) {
     $app->response->redirect("../#/images");
   });
 
-}
 
+// -----------------
+// DELETE
+// -----------------
+  $app->delete('/images/:file', function ($file) use ($app) {
+    $dir = "Images/";
+    echo json_encode_utf8($file);
+    unlink($dir . $file);
+  });
+
+}
 ?>
