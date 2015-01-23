@@ -12,6 +12,9 @@ gallery.config(function ($routeProvider) {
     .when('/images_new', {
       templateUrl: 'templates/images_new.html',
     })
+    .when('/error', {
+      templateUrl: 'templates/error.html',
+    })
     ;
 });
 
@@ -24,8 +27,6 @@ gallery.controller('ImagesController', function ($scope, $http) {
   $scope.updateSlides();
 
   $scope.deleteImage = function(image) {
-    console.log(image);
-    
     $http.delete('api.php/images/' + image).then(function() {
       $scope.updateSlides();
     });

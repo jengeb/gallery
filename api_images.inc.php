@@ -27,11 +27,16 @@ function init_api_images($app) {
   $app->post("/images", function () use ($app) {
     $dir = "Images/";
 
-    $src = $_FILES['upfile']['tmp_name'];
-    $dest = $dir.$_FILES['upfile']['name'];
+    if (preg_match('/^image/i', $_FILES['upfile']['type'])) {
 
-    move_uploaded_file($src, $dest);
-    $app->response->redirect("../#/images");
+      $src = $_FILES['upfile']['tmp_name'];
+      $dest = $dir.$_FILES['upfile']['name'];
+
+      move_uploaded_file($src, $dest);
+      $app->response->redirect("../#/images");
+    } else {
+      $app->response->redirect("../#/error");
+    }
   });
 
 
