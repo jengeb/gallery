@@ -42,6 +42,10 @@ gallery.controller('LoginController', function($scope, $http) {
     $http.post('api.php/auth', {
       Username: $scope.Username,
       Password: $scope.Password
+    }).then(function() {
+      $scope.auth = true;
+    }, function() {
+      $scope.auth = false;
     });
   };
 });
