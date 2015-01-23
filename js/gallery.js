@@ -15,9 +15,6 @@ gallery.config(function ($routeProvider) {
     .when('/error', {
       templateUrl: 'templates/error.html',
     })
-    .when('/failed', {
-      templateUrl: 'templates/failed.html',
-    })
     ;
 });
 
@@ -53,7 +50,9 @@ gallery.controller('LoginController', function($scope, $http) {
   };
 
   $scope.logout = function() {
-    $http.post('api.php/auth').then(function() {
+    $http.post('api.php/auth', {
+      Logout: "Logout"
+    }).then(function() {
       $scope.Username = "";
       $scope.Password = "";
       $scope.auth = false;
