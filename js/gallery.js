@@ -48,4 +48,11 @@ gallery.controller('LoginController', function($scope, $http) {
       $scope.auth = false;
     });
   };
+
+  $scope.logout = function() {
+
+    
+    $scope.auth = false;
+  };
+
 });
