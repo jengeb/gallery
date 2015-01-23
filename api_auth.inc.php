@@ -11,7 +11,7 @@ function init_api_auth($app) {
       return $app -> status(200);
     }
 
-    if ($_SESSION["Username"]) {
+    if (isset($_SESSION["Username"]) && $_SESSION["Username"]) {
       echo json_encode_utf8(array('Username' => $_SESSION["Username"]));
       return $app -> status(200);
     }
