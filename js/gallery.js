@@ -15,6 +15,9 @@ gallery.config(function ($routeProvider) {
     .when('/error', {
       templateUrl: 'templates/error.html',
     })
+    .when('/failed', {
+      templateUrl: 'templates/failed.html',
+    })
     ;
 });
 
