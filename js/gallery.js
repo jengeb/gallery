@@ -48,9 +48,10 @@ gallery.controller('AddImageController', function($scope, $upload, $location, $r
 
 gallery.controller('LoginController', function($scope, AuthService) {
   $scope.auth = AuthService;
+  $scope.logInOut = {};
   $scope.logout = function () {
-    $scope.Username = "";
-    $scope.Password = "";
+    $scope.logInOut.Username = "";
+    $scope.logInOut.Password = "";
     AuthService.logout();
   };
 });

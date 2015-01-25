@@ -42,12 +42,12 @@
         <div class="navbar-right">
           <form class="navbar-form" role="form" ng-show="!auth.loggedIn">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Benutzername" ng-model="Username">
+              <input type="text" class="form-control" placeholder="Benutzername" ng-model="logInOut.Username">
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" placeholder="Passwort" ng-model="Password">
+              <input type="password" class="form-control" placeholder="Passwort" ng-model="logInOut.Password">
             </div>
-            <button ng-click="auth.login(Username, Password)" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-log-in"></span> anmelden</button>
+            <button ng-click="auth.login(logInOut.Username, logInOut.Password)" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-log-in"></span> anmelden</button>
           </form>
 
 
