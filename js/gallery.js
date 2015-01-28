@@ -77,7 +77,7 @@ gallery.service('AuthService', function ($http) {
       Logout: "Logout"
     }).then(function() {
       AuthService.loggedIn = false;
-      AuthService.Username = false;
+      AuthService.Username = undefined;
     });
   };
   AuthService.login();
