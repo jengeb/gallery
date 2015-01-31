@@ -36,7 +36,9 @@
       <div class="collapse navbar-collapse"  ng-controller="AddImageController">
         <ul class="nav navbar-nav">
           <li><a href="#/images"><span class="glyphicon glyphicon-picture"></span> Album ansehen</a></li>
-          <li ng-show="auth.loggedIn"><button class="btn btn-default navbar-btn" ng-file-select ng-model="file" ng-file-change="upload()"><span class="glyphicon glyphicon-upload"></span> Bild hochladen</button></li>
+          <!--li ng-show="auth.loggedIn"><button class="btn btn-default navbar-btn" ng-file-select ng-model="file" ng-file-change="upload()"><span class="glyphicon glyphicon-upload"></span> Bild hochladen</button></li-->
+          <li ng-show="auth.loggedIn"><a href="#/images_new"><span class="glyphicon glyphicon-plus-sign"></span> Bilder hinzufügen</a></li>
+
         </ul>
 
         <div class="navbar-right">

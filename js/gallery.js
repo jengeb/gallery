@@ -9,6 +9,9 @@ gallery.config(function ($routeProvider) {
     .when('/images', {
       templateUrl: 'templates/images.html',
     })
+    .when('/images_new', {
+      templateUrl: 'templates/images_new.html',
+    })
     .when('/error', {
       templateUrl: 'templates/error.html',
     })

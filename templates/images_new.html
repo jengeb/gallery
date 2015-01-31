@@ -1,0 +1,33 @@
+<div ng-controller="AddImageController">
+
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-9 marginTop">
+    <h1>Bilder hinzufügen</h1>
+
+<form action="input_file.htm" method="post" enctype="multipart/form-data">
+    <input name="Datei" type="file" size="50" maxlength="100000" accept="text/*">
+</form>
+
+    <button class="btn btn-default navbar-btn" ng-file-select ng-model="file" ng-file-change="upload()">Datei auswählen</button>
+
+    <div class="row">
+      <div class="form-group col-sm-6">
+        Tags:
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <input type="text" class="form-control" id="tag" placeholder="weitere Tags, z.B. Natur, Architektur usw." ng-model="Tags" empty-to-null>
+      </div>
+      <button type="button" class="btn btn-default" ng-click=""><span class="glyphicon glyphicon-plus-sign"></span> hinzufügen</button>
+    </div>
+
+
+
+    <button type="button" class="btn btn-default" ng-click="addMovie()"><span class="glyphicon glyphicon-save"></span> speichern</button>
+
+  </div>
+
+</div>
