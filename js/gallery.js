@@ -47,6 +47,11 @@ gallery.controller('AddImageController', function($scope, $upload, $location, $r
       $location.path('/error');
     });
   };
+  $scope.tags = [];
+  $scope.push = function(input) {
+    $scope.tags.push(input);
+    $scope.input= "";
+  };
 });
 
 gallery.controller('LoginController', function($scope, AuthService) {

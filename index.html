@@ -33,7 +33,7 @@
           <a class="navbar-brand bigger" href="#/"> Galerie</a>
         </div>
       </div>
-      <div class="collapse navbar-collapse"  ng-controller="AddImageController">
+      <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
           <li><a href="#/images"><span class="glyphicon glyphicon-picture"></span> Album ansehen</a></li>
           <!--li ng-show="auth.loggedIn"><button class="btn btn-default navbar-btn" ng-file-select ng-model="file" ng-file-change="upload()"><span class="glyphicon glyphicon-upload"></span> Bild hochladen</button></li-->
@@ -49,7 +49,7 @@
             <div class="form-group">
               <input type="password" class="form-control" placeholder="Passwort" ng-model="logInOut.Password">
             </div>
-            <button ng-click="auth.login(logInOut.Username, logInOut.Password)" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-log-in"></span> anmelden</button>
+            <button ng-click="auth.login(logInOut.Username, logInOut.Password)" type="submit" class="btn btn-default marginLeft"><span class="glyphicon glyphicon-log-in"></span> anmelden</button>
           </form>
 
 
