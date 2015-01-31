@@ -5,7 +5,8 @@
   <div class="col-md-9 marginTop">
     <h1 class="marginBottom">Bilder hinzufügen</h1>
 
-    <input name="file" type="file" ng-model="file">
+    <input name="file" type="file" ng-file-select ng-model="file">
+
 
     <div class="row">
       <div class="col-md-6 marginTopBottom text-left">
@@ -21,7 +22,7 @@
       <button type="button" class="btn btn-default" ng-click="push(input)"><span class="glyphicon glyphicon-plus-sign"></span> hinzufügen</button>
     </div>
 
-    <button type="button" class="btn btn-default moreMarginTop" ng-click="upload(file)"><span class="glyphicon glyphicon-save"></span> speichern</button>
+    <button type="button" class="btn btn-default moreMarginTop" ng-click="upload()"><span class="glyphicon glyphicon-save"></span> speichern</button>
 
   </div>
 
