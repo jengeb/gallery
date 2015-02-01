@@ -19,9 +19,13 @@ function init_api_images($app, $con, $config) {
           error(500, "SQL error: " . mysqli_error($con));
         }
 
-        $dsatz = mysqli_fetch_assoc($res);
+        $tags = array();
 
-        $imageNames[] = array("image" => $file, "tags" => $dsatz);
+        while ($dsatz = mysqli_fetch_assoc($res)) {
+          array_push($tags, $dsatz["tag"]);
+        }
+
+        $imageNames[] = array("image" => $file, "tags" => $tags);
       }
     }
 

@@ -23,8 +23,7 @@ gallery.controller('ImagesController', function ($scope, $http, $upload, $locati
   $scope.auth = AuthService;
   $scope.updateSlides = function() {
     $http.get('api.php/images').then(function(response) {
-      $scope.slides = response.data.images;
-      $scope.tags = response.data.images;
+      $scope.images = response.data.images;
     });
   };
   $scope.updateSlides();
