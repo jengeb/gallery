@@ -39,6 +39,7 @@ gallery.controller('AddImageController', function($scope, $upload, $location, $r
   $scope.upload = function(file) {
     $upload.upload({
       url: "api.php/images",
+      data: {tags: $scope.tags},
       file: $scope.file
     }).success(function() {
       $location.path('/images');

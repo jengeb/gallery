@@ -43,7 +43,8 @@ function init_api_images($app, $con, $config) {
     if ($_SESSION["Username"]) {
       $dir = "Images/";
 
-      echo json_encode_utf8($_FILES);
+      // in $_REQUEST steht data Inhalt
+      $tags = json_decode($_REQUEST["tags"]);
 
       if (preg_match('/^image/i', $_FILES['file']['type'])) {
 
@@ -52,11 +53,10 @@ function init_api_images($app, $con, $config) {
 
         move_uploaded_file($src, $dest);
 
-        $tag = "Hallo";
-
-        $sql = "insert gallery (name, tag) values ('" . mysqli_real_escape_string($con, $_FILES['file']['name']) . "', '" . mysqli_real_escape_string($con, $tag) . "')";
-
-        $res = mysqli_query($con, $sql);
+        foreach ($tags as $tag) {
+          $sql = "insert gallery (name, tag) values ('" . mysqli_real_escape_string($con, $_FILES['file']['name']) . "', '" . mysqli_real_escape_string($con, $tag) . "')";
+          $res = mysqli_query($con, $sql);
+        }
 
       }
     } else {
