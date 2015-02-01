@@ -2,7 +2,7 @@
 
   <div class="myCarousel moreMarginTop">
     <carousel>
-      <slide ng-repeat="image in images" active="active">
+      <slide ng-repeat="image in images" active="image.active">
         <img ng-src="Images/{{image.image}}" style="margin:auto;">
         <div class="carousel-caption">
           <div class="moreMarginBottom"><span ng-repeat="tag in image.tags" class="label label-default moreMarginLeftRight">{{tag}}</span></div>
@@ -16,33 +16,9 @@
     <div class="col-xs-6 col-md-1">
     </div>
 
-    <div class="col-xs-6 col-md-2">
-      <a href="#" class="thumbnail">
-        <img src="Images/IMG_0824.JPG" alt="...">
-      </a>
-    </div>
-
-    <div class="col-xs-6 col-md-2">
-      <a href="#" class="thumbnail">
-        <img src="Images/IMG_0824.JPG" alt="...">
-      </a>
-    </div>
-
-    <div class="col-xs-6 col-md-2">
-      <a href="#" class="thumbnail">
-        <img src="Images/IMG_0824.JPG" alt="...">
-      </a>
-    </div>
-
-    <div class="col-xs-6 col-md-2">
-      <a href="#" class="thumbnail">
-        <img src="Images/IMG_0824.JPG" alt="...">
-      </a>
-    </div>
-
-    <div class="col-xs-6 col-md-2">
-      <a href="#" class="thumbnail">
-        <img src="Images/IMG_0824.JPG" alt="...">
+    <div class="col-xs-6 col-md-2" ng-repeat="image in relatedImages">
+      <a href="https://www.flickr.com/photos/{{image.owner}}/{{image.id}}" class="thumbnail">
+        <img ng-src="https://farm{{image.farm}}.staticflickr.com/{{image.server}}/{{image.id}}_{{image.secret}}_m.jpg" alt="...">
       </a>
     </div>
 

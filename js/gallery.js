@@ -33,6 +33,25 @@ gallery.controller('ImagesController', function ($scope, $http, $upload, $locati
       $scope.updateSlides();
     });
   };
+
+  $scope.$watch(function () {
+    return _.find($scope.images, {active: true});
+  }, function (image) {
+    if (!image) return;
+    $http.get('https://api.flickr.com/services/rest/', { params: {
+      method: 'flickr.photos.search',
+      api_key: flickrApiKey,
+      tags: image.tags.join(','),
+      licence: '4',
+      format: 'json',
+      per_page: '5',
+      nojsoncallback: '?'
+    }}).success(function (data) {
+      $scope.relatedImages = data.photos.photo;
+    });
+  }, true);
+
+
 });
 
 gallery.controller('AddImageController', function ($scope, $upload, $location, $route) {
