@@ -55,13 +55,15 @@ gallery.controller('AddImageController', function ($scope, $upload, $location, $
   };
 });
 
-gallery.controller('LoginController', function ($scope, AuthService) {
+gallery.controller('LoginController', function ($scope, AuthService, $location, $route) {
   $scope.auth = AuthService;
   $scope.logInOut = {};
   $scope.logout = function () {
     $scope.logInOut.Username = "";
     $scope.logInOut.Password = "";
     AuthService.logout();
+    $location.path('/images');
+    $route.reload();
   };
   $scope.login = function () {
     console.log(AuthService);
