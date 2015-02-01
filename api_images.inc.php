@@ -80,10 +80,6 @@ function init_api_images($app, $con, $config) {
         error(500, "MySQL-Error: " . mysqli_error($con));
       }
 
-      if (!mysqli_affected_rows($con)) {
-        error(404, "Das angegebene Bild ist nicht vorhanden");
-      }
-
     } else {
       return ($app -> halt(401));
     }
