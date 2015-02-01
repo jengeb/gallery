@@ -69,6 +69,17 @@ function init_api_images($app, $con, $config) {
       $dir = "Images/";
       echo json_encode_utf8($file);
       unlink($dir . $file);
+
+      $sql = "delete from gallery where name = '" . mysqli_real_escape_string($con, $file) . "'";
+
+      if (!mysqli_query($con, $sql)) {
+        error(500, "MySQL-Error: " . mysqli_error($con));
+      }
+
+      if (!mysqli_affected_rows($con)) {
+        error(404, "Das angegebene Bild ist nicht vorhanden");
+      }
+
     } else {
       return ($app -> halt(401));
     }
