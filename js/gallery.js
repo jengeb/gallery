@@ -43,6 +43,7 @@ gallery.controller('ImagesController', function ($scope, $http, $upload, $locati
       api_key: flickrApiKey,
       tags: image.tags.join(','),
       tag_mode: 'all',
+      sort: 'relevance',
       licence: '4',
       format: 'json',
       per_page: '5',
