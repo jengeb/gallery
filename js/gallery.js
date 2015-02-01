@@ -21,41 +21,41 @@ gallery.config(function ($routeProvider) {
 
 gallery.controller('ImagesController', function ($scope, $http, $upload, $location, AuthService) {
   $scope.auth = AuthService;
-  $scope.updateSlides = function() {
-    $http.get('api.php/images').then(function(response) {
+  $scope.updateSlides = function () {
+    $http.get('api.php/images').then(function (response) {
       $scope.images = response.data.images;
     });
   };
   $scope.updateSlides();
 
-  $scope.deleteImage = function(image) {
-    $http.delete('api.php/images/' + image).then(function() {
+  $scope.deleteImage = function (image) {
+    $http.delete('api.php/images/' + image).then(function () {
       $scope.updateSlides();
     });
   };
 });
 
-gallery.controller('AddImageController', function($scope, $upload, $location, $route) {
-  $scope.upload = function(file) {
+gallery.controller('AddImageController', function ($scope, $upload, $location, $route) {
+  $scope.upload = function (file) {
     $upload.upload({
       url: "api.php/images",
       data: {tags: $scope.tags},
       file: $scope.file
-    }).success(function() {
+    }).success(function () {
       $location.path('/images');
       $route.reload();
-    }).error(function() {
+    }).error(function () {
       $location.path('/error');
     });
   };
   $scope.tags = [];
-  $scope.push = function(input) {
+  $scope.push = function (input) {
     $scope.tags.push(input);
     $scope.input= "";
   };
 });
 
-gallery.controller('LoginController', function($scope, AuthService) {
+gallery.controller('LoginController', function ($scope, AuthService) {
   $scope.auth = AuthService;
   $scope.logInOut = {};
   $scope.logout = function () {
@@ -63,28 +63,35 @@ gallery.controller('LoginController', function($scope, AuthService) {
     $scope.logInOut.Password = "";
     AuthService.logout();
   };
+  $scope.login = function () {
+    console.log(AuthService);
+    AuthService.login($scope.logInOut.Username, $scope.logInOut.Password).error(function () {
+      console.log("Bla");
+      $scope.error = true;
+    });
+  };
 });
 
 gallery.service('AuthService', function ($http) {
   var AuthService = {
     loggedIn: false
   };
-  AuthService.login = function(Username, Password) {
+  AuthService.login = function (Username, Password) {
     return $http.post('api.php/auth', {
       Username: Username,
       Password: Password
-    }).then(function(response) {
+    }).success(function (data) {
       AuthService.loggedIn = true;
-      AuthService.Username = response.data.Username;
-    }, function() {
+      AuthService.Username = data.Username;
+    }).error(function () {
       AuthService.loggedIn = false;
       AuthService.Username = undefined;
     });
   };
-  AuthService.logout = function() {
+  AuthService.logout = function () {
     return $http.post('api.php/auth', {
       Logout: "Logout"
-    }).then(function() {
+    }).then(function () {
       AuthService.loggedIn = false;
       AuthService.Username = undefined;
     });
