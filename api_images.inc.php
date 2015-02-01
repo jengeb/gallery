@@ -50,7 +50,7 @@ function init_api_images($app, $con, $config) {
 
         $tag = "Hallo";
 
-        $sql = "insert gallery (name, tag) values ('" . $_FILES['file']['name'] . "', '" . $tag . "')";
+        $sql = "insert gallery (name, tag) values ('" . mysqli_real_escape_string($con, $_FILES['file']['name']) . "', '" . mysqli_real_escape_string($con, $tag) . "')";
 
         $res = mysqli_query($con, $sql);
 
