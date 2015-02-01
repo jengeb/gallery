@@ -44,7 +44,7 @@
   }
 
   mysqli_set_charset($con, "utf8");
-  mysqli_select_db($con, "gallery");
+  mysqli_select_db($con, $config["db"]);
 
   init_api_images($app, $con, $config);
   init_api_auth($app, $con, $config);
