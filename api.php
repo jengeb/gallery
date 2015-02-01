@@ -1,5 +1,6 @@
 <?php
 
+  require "config.inc.php";
   require "vendor/autoload.php";
   require "api_images.inc.php";
   require "api_auth.inc.php";
@@ -35,8 +36,18 @@
     return json_encode($obj, JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT) . "\n";
   }
 
-  init_api_images($app);
-  init_api_auth($app);
+  $con = mysqli_init();
+
+  // Connecting der Datenbank; return number of matched rows, not of affected rows
+  if (!$con || !mysqli_real_connect($con, $config["server"], $config["username"], $config["password"], NULL, NULL, NULL, MYSQLI_CLIENT_FOUND_ROWS)) {
+    error(503, "Connection to SQL-Server failed");
+  }
+
+  mysqli_set_charset($con, "utf8");
+  mysqli_select_db($con, "gallery");
+
+  init_api_images($app, $con, $config);
+  init_api_auth($app, $con, $config);
 
   try {
     $app->run();
