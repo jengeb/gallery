@@ -87,9 +87,7 @@ gallery.controller('LoginController', function ($scope, AuthService, $location, 
     $route.reload();
   };
   $scope.login = function () {
-    console.log(AuthService);
     AuthService.login($scope.logInOut.Username, $scope.logInOut.Password).error(function () {
-      console.log("Bla");
       $scope.error = true;
     });
   };
